@@ -1,0 +1,502 @@
+/* Header Slim: Reduje los padding para que el encabezado ocupe el mínimo espacio necesario.
+
+Hover Real: Añadí !important en los estados :hover para asegurar que el CSS gane a cualquier estilo inline que JS pueda estar metiendo.
+
+Touch Friendly: En celulares, los botones ahora miden 50px de alto y los inputs 48px, lo que los hace perfectos para usar con el dedo.
+
+Feedback Visual: Al hacer clic (:active), los botones se encogen ligeramente o cambian de brillo para avisar al usuario que la acción se detectó. */
+
+
+/* =========================
+   MODAL CATEGORÍAS (CAT)
+========================= */
+/* =========================
+   VARIABLES CAT
+========================= */
+.modal-cat {
+    --cat-primary: #6d28d9;
+    --cat-primary-hover: #5b21b6;
+    --cat-accent: #8b5cf6;
+    --cat-bg: rgba(30, 27, 75, 0.75);
+    --cat-border: #ddd6fe;
+    --cat-input-bg: #f5f3ff;
+    --cat-text: #1e1b4b;
+}
+
+/* =========================
+   CONTENEDOR MODAL
+========================= */
+#formModal.modal-cat {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--cat-bg);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* =========================
+   CAJA MODAL
+========================= */
+.modal-cat .modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    border-radius: 18px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+    animation: modalCatEntry 0.25s ease-out;
+}
+
+/* =========================
+   HEADER
+========================= */
+.modal-cat .modal-header {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--cat-primary), var(--cat-accent));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-cat .modal-header h2 {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* BOTÓN CERRAR */
+.modal-cat .close-btn {
+    color: #ddd6fe;
+    font-size: 1.4rem;
+    cursor: pointer !important;
+    transition: 0.2s;
+}
+
+.modal-cat .close-btn:hover {
+    color: #ef4444 !important;
+    transform: scale(1.1);
+}
+
+/* =========================
+   GRID FORM
+========================= */
+.modal-cat #formInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 24px;
+}
+
+/* =========================
+   CAMPOS
+========================= */
+.modal-cat .field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-cat .field-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--cat-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* INPUTS */
+.modal-cat .field-input input,
+.modal-cat .field-input select,
+.modal-cat .field-input textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid var(--cat-border);
+    background: var(--cat-input-bg);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* INPUT TEXT */
+.modal-cat .field-input input {
+    height: 42px;
+    padding: 0 12px;
+}
+
+/* SELECT */
+.modal-cat select {
+    height: 42px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+/* TEXTAREA */
+.modal-cat textarea {
+    padding: 10px;
+    min-height: 70px;
+    resize: none;
+}
+
+/* FOCUS */
+.modal-cat input:focus,
+.modal-cat select:focus,
+.modal-cat textarea:focus {
+    border-color: var(--cat-accent);
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+}
+
+/* =========================
+   CHECKBOX PRO
+========================= */
+.modal-cat input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--cat-primary);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.modal-cat .checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================
+   FULL WIDTH
+========================= */
+.modal-cat .full-width {
+    grid-column: span 2;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.modal-cat .modal-footer {
+    padding: 16px 24px;
+    background: #faf5ff;
+    border-top: 1px solid var(--cat-border);
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.modal-cat .btn-base {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer !important;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* SAVE */
+.modal-cat .btn-save {
+    background: linear-gradient(135deg, var(--cat-primary), var(--cat-accent));
+    color: #fff;
+}
+
+.modal-cat .btn-save:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(139, 92, 246, 0.3);
+}
+
+.modal-cat .btn-save:active {
+    transform: scale(0.97);
+}
+
+/* CANCEL */
+.modal-cat .btn-cancel {
+    background: #fff;
+    border: 1px solid var(--cat-border);
+    color: var(--cat-text);
+}
+
+.modal-cat .btn-cancel:hover {
+    background: #f3f0ff !important;
+}
+
+/* DELETE */
+.modal-cat .btn-delete-text {
+    color: #ef4444;
+}
+
+/* =========================
+   RESPONSIVE (APP STYLE)
+========================= */
+@media (max-width: 600px) {
+
+    #formModal.modal-cat {
+        align-items: flex-end !important;
+        padding: 0;
+    }
+
+    .modal-cat .modal-content {
+        width: 100%;
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 20px 20px 0 0;
+        animation: slideUpCat 0.25s ease-out;
+    }
+
+    .modal-cat #formInputs {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .modal-cat input,
+    .modal-cat select,
+    .modal-cat textarea {
+        height: 48px;
+        font-size: 16px;
+    }
+
+    .modal-cat .modal-footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .modal-cat .btn-base {
+        width: 100%;
+        height: 50px;
+        justify-content: center;
+    }
+
+    .modal-cat .btn-save {
+        order: 1;
+    }
+
+    .modal-cat .btn-cancel {
+        order: 2;
+    }
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes modalCatEntry {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideUpCat {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   1. EL CONTENEDOR MAESTRO (MODAL)
+========================================= */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100000; /* Prioridad absoluta sobre el fondo */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
+    backdrop-filter: blur(4px); /* Efecto borroso profesional al fondo */
+    overflow-y: auto;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. LA CAJA DEL FORMULARIO (SOLIDIFICA EL FONDO) */
+.modal-content-grande {
+    background-color: #ffffff !important; /* BLANCO PURO Y SÓLIDO, NO TRANSPARENTE */
+    margin: 3% auto; 
+    width: 90%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6); /* Sombra pronunciada para elevar el modal */
+    overflow: hidden;
+    animation: slideIn 0.3s ease-out; /* Animación de entrada suave */
+}
+
+/* 3. CABECERA DEL MODAL */
+.modal-header {
+    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%); /* Degradado profesional */
+    color: white;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-header h2 { 
+    margin: 0; 
+    font-size: 1.3rem; 
+    font-weight: 600;
+}
+
+/* 4. CUERPO DEL FORMULARIO Y GRILLA */
+#formMaestroProducto {
+    padding: 25px;
+}
+
+/* Estructura en Grilla: LA CLAVE DE LA ALINEACIÓN */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 20px; /* Espaciado uniforme entre campos */
+    margin-bottom: 25px;
+}
+
+/* Contenedor de cada Campo */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo de las Etiquetas (Labels) */
+.form-group label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo Uniforme para Inputs y Selects */
+.form-group input, 
+.form-group select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fbfbfb;
+    transition: all 0.2s;
+    height: 48px; /* Altura uniforme para todos */
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #1a73e8;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+    outline: none;
+}
+
+/* SECCIONES DEL FORMULARIO */
+.form-section {
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+    position: relative;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    color: #1a73e8;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Efecto minimizado */
+.form-section.minimized {
+    height: 60px;
+    overflow: hidden;
+    background: #f8f9fa;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* 5. BOTONES INTERACTIVOS */
+.btn-agregar-variante {
+    background: #f1f3f4;
+    color: #1a73e8;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px dashed #1a73e8;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    transition: all 0.2s;
+}
+
+.btn-agregar-variante:hover { 
+    background-color: #e8f0fe; 
+    border-style: solid;
+}
+
+/* Botón Final */
+.btn-guardar {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-guardar:hover { background-color: #218838; }
+
+/* Animación de entrada */
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

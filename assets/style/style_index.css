@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+}
+html, body {
+    touch-action: manipulation;
+}
+
+
+/* BARRA SUPERIOR */
+.topbar {
+    height: 60px;
+    background: #1e272e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+/* MENÚ LATERAL */
+.sidebar {
+    width: 250px;
+    background: #2f3640;
+    color: white;
+    padding-top: 10px;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 14px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #3d3d3d;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar li:hover {
+    background: #353b48;
+}
+
+.sidebar i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* ESTADO RESALTADO DE CONFIGURACIÓN */
+.sidebar li.active-config {
+    background: #0984e3 !important;
+    /* Color azul resaltado */
+    color: white;
+    font-weight: bold;
+}
+
+/* SUBMENÚ DE CONFIGURACIONES */
+.submenu {
+    display: none;
+    /* Oculto por defecto */
+    background: #242b33;
+    list-style: none;
+    padding: 5px 0;
+}
+
+.submenu li {
+    padding: 10px 20px 10px 40px !important;
+    font-size: 13px;
+    color: #bdc3c7;
+    border-bottom: none;
+    transition: 0.2s;
+}
+
+/* HOVER EN OPCIONES DE CONFIGURACIÓN */
+.submenu li:hover {
+    background: #3d4652 !important;
+    color: #74b9ff !important;
+    padding-left: 45px !important;
+    /* Efecto de desplazamiento */
+}
+
+/* Muestra el submenú */
+.show {
+    display: block;
+}
+
+/* PANEL CENTRAL */
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.card .value {
+    font-size: 26px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.action-btn {
+    background: #0984e3;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+

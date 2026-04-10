@@ -1,0 +1,89 @@
+/* Icono Integrado: Usé un background-image con un SVG de lupa profesional. Así no necesitas cargar archivos externos de iconos.
+
+Efecto "Solo Icono" en Móvil: En pantallas pequeñas, el input se encoge a 40px. Parece un simple botón circular de búsqueda.
+
+Expansión Fluida: Al hacer "tap" (focus) en el celular, el buscador se abre al 100% del ancho con una transición suave. Esto evita que se "ensime" con otros elementos.
+
+UX Enterprise: Agregué un sombreado sutil (box-shadow) y bordes de 2px para que se sienta como una herramienta de alta calidad y no una página web vieja. */
+
+
+/* search _ilter.css */
+
+
+/* 1. CONTENEDOR BASE */
+.search-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+/* 2. ESTILO DE LA BARRA (PC) */
+#searchInput {
+            padding: 10px 15px;
+            width: 150px;
+            /* Tamaño base profesional */
+            border: 1px solid #0d5df0;
+            /* border: 2px solid #e2e8f0; */
+    border-radius: 25px;
+    outline: none;
+    background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E") no-repeat 12px center;
+    background-size: 18px;
+    padding-left: 40px;
+    /* Espacio para el icono de lupa */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    color: #1e293b;
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.801);
+}
+
+
+
+#searchInput:focus {
+    width: 250px;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    background-color: #ffffff;
+}
+
+/* 3. ADAPTACIÓN PARA CELULAR (Efecto Expansivo) */
+@media (max-width: 600px) {
+    .search-container {
+        justify-content: flex-end;
+        /* Lo pegamos a la derecha en móvil */
+        margin-bottom: 10px;
+    }
+
+    #searchInput {
+        width: 40px;
+        /* Solo se ve el círculo del icono */
+        padding-left: 40px;
+        /* Mantiene la lupa visible */
+        padding-right: 0;
+        cursor: pointer;
+        background-position: center;
+        /* Centra la lupa */
+        border-color: transparent;
+        background-color: #f1f5f9;
+    }
+
+    /* Cuando el usuario toca el icono en el celular */
+    #searchInput:focus {
+        width: 100%;
+        /* Se expande a todo el ancho disponible */
+        border-color: #2563eb;
+        background-position: 12px center;
+        /* Regresa la lupa a su sitio */
+        padding-right: 15px;
+        cursor: text;
+    }
+
+    /* Ocultar el placeholder si no está en focus para que no se vea feo el texto cortado */
+    #searchInput:not(:focus)::placeholder {
+        color: transparent;
+    }
+}
+
+

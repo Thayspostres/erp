@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Configuración | Datos del Negocio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/style/module_pages/business_profile.css">
+
+</head>
+
+<body>
+
+    <div class="nav-top">
+        <h2 id="status-text">Cargando...</h2>
+        <div class="btn-group">
+            <button id="btn-add" class="btn-add" onclick="openM()"><i class="fa-solid fa-plus"></i> NUEVO
+                PERFIL</button>
+            <button id="btn-edit" class="btn-edit" onclick="openM()" disabled><i class="fa-solid fa-pen"></i>
+                EDITAR</button>
+            <button id="btn-del" class="btn-del" onclick="eliminar()" disabled><i class="fa-solid fa-trash"></i>
+                ELIMINAR</button>
+            <button class="btn-back" onclick="window.history.back()"><i class="fa-solid fa-chevron-left"></i>
+                REGRESAR</button>
+        </div>
+    </div>
+
+    <div class="container" id="main-view">
+    </div>
+
+    <div id="modal-f" class="modal">
+        <div class="modal-content">
+            <h2 style="margin-top:0; color:var(--accent)"><i class="fa-solid fa-gear"></i> Configuración del Negocio
+            </h2>
+            <form id="form-perfil">
+                <div class="f-grid">
+                    <div class="f-group f-full">
+                        <label>NOMBRE DEL NEGOCIO *</label>
+                        <input type="text" name="NOMBRE_NEGOCIO" required placeholder="Ej: Mi Empresa S.A.">
+                    </div>
+                    <div class="f-group">
+                        <label>NOMBRE DEL RESPONSABLE *</label>
+                        <input type="text" name="NOMBRE_RESPONSABLE" required>
+                    </div>
+                    <div class="f-group">
+                        <label>FECHA ALTA *</label>
+                        <input type="date" name="FECHA_ALTA" id="date-in" required>
+                    </div>
+                    <div class="f-group">
+                        <label>TELÉFONO (Solo números) *</label>
+                        <input type="tel" name="TELEFONO" pattern="[0-9]{8,15}" title="Solo números (8 a 15 dígitos)"
+                            required>
+                    </div>
+                    <div class="f-group">
+                        <label>WHATSAPP (Solo números) *</label>
+                        <input type="tel" name="WHATSAPP" pattern="[0-9]{8,15}" title="Solo números (8 a 15 dígitos)"
+                            required>
+                    </div>
+                    <div class="f-group f-full">
+                        <label>CORREO ELECTRÓNICO *</label>
+                        <input type="email" name="EMAIL" required placeholder="correo@ejemplo.com">
+                    </div>
+
+                    <div class="f-full"
+                        style="border-bottom: 2px solid #eee; margin: 10px 0; padding-bottom: 5px; color: var(--accent); font-weight: bold;">
+                        REDES SOCIALES Y MEDIA</div>
+
+                    <div class="f-group"><label>URL LOGO</label><input type="url" name="LOGO_URL"
+                            placeholder="https://..."></div>
+                    <div class="f-group"><label>URL BANNER</label><input type="url" name="BANNER_URL"
+                            placeholder="https://..."></div>
+                    <div class="f-group f-full"><label>GOOGLE MAPS (LINK COMPARTIR)</label><input type="url"
+                            name="MAPS_LINK" placeholder="https://goo.gl/maps/..."></div>
+                    <div class="f-group"><label>FACEBOOK LINK</label><input type="url" name="FACEBOOK_LINK"></div>
+                    <div class="f-group"><label>INSTAGRAM LINK</label><input type="url" name="INSTAGRAM_LINK"></div>
+                    <div class="f-group"><label>TIKTOK LINK</label><input type="url" name="TIKTOK"></div>
+                    <div class="f-group"><label>SITIO WEB</label><input type="url" name="WEB_LINK"></div>
+
+                    <div class="f-group f-full">
+                        <label>COMENTARIOS ADICIONALES</label>
+                        <textarea name="COMENTARIO" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div style="margin-top:25px; display: flex; justify-content: flex-end; gap: 12px;">
+                    <button type="button" class="btn-back" onclick="closeM()">CANCELAR</button>
+                    <button type="submit" class="btn-add" style="padding: 12px 30px;">GUARDAR DATOS</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="../assets/script/table.js"></script>
+<script src="../assets/script/globalLoader.js"></script>
+    <script src="../assets/script/module_pages/business_profile.js"></script>
+</body>
+
+</html>

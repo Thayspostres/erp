@@ -1,0 +1,865 @@
+<!-- catalog_operations.html -->
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Thays-Postres - Catálogos operación</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <link rel="stylesheet" href="../assets/style/module_pages/style_module_list.css">
+    <link rel="stylesheet" href="../assets/style/globalLoader.css">
+    <link rel="stylesheet" href="../assets/cat_config/ui_modal_cat.css">
+    <link rel="stylesheet" href="../assets/style/search_filter.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <style>
+        /* --- ESTILO PROFESIONAL ENTERPRISE REAL --- */
+        #formModal.modal {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+        }
+
+        #formModal .modal-content {
+            background: #ffffff;
+            margin: 3% auto;
+            width: 95%;
+            max-width: 650px;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            overflow: hidden;
+            animation: modalEntry 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalEntry {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px 32px;
+            background: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .close-btn {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #ef4444;
+        }
+
+        /* Grid de 2 Columnas */
+        #formInputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            padding: 28px 32px;
+        }
+
+        .field-container.full-width {
+            grid-column: span 2;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .field-input input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #1e293b;
+            background-color: #f8fafc;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .field-input input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .field-input input[readonly] {
+            background-color: #f1f5f9;
+            color: #64748b;
+            cursor: not-allowed;
+            border-style: dashed;
+        }
+
+        .modal-footer {
+            padding: 20px 32px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        /* Botones Profesionales */
+        .btn-base {
+            padding: 10px 18px;
+            border-radius: 7px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-save {
+            background: #0f172a;
+            color: #fff;
+        }
+
+        .btn-save:hover {
+            background: #1e293b;
+        }
+
+        .btn-cancel {
+            background: #fff;
+            color: #64748b;
+            border-color: #e2e8f0;
+        }
+
+        .btn-cancel:hover {
+            background: #f1f5f9;
+        }
+
+        .btn-delete-text {
+            margin-right: auto;
+            color: #ef4444;
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            #formInputs {
+                grid-template-columns: 1fr;
+            }
+
+            .field-container.full-width {
+                grid-column: span 1;
+            }
+        }
+
+        .radio-group-pro {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #0f172a;
+            /* Color del ERP */
+            cursor: pointer;
+        }
+
+        .radio-option:hover {
+            color: #2563eb;
+        }
+
+        .last-row-highlight {
+            background-color: #e2e8f0 !important;
+            /* Un gris suave */
+            border-top: 2px solid #cbd5e1;
+        }
+</style> -->
+    <style>
+        /* =========================================
+   1. EL CONTENEDOR MAESTRO (MODAL)
+========================================= */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100000;
+            /* Prioridad absoluta sobre el fondo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Fondo oscuro con más opacidad */
+            backdrop-filter: blur(4px);
+            /* Efecto borroso profesional al fondo */
+            overflow-y: auto;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* 2. LA CAJA DEL FORMULARIO (SOLIDIFICA EL FONDO) */
+        .modal-content-grande {
+            background-color: #ffffff !important;
+            /* BLANCO PURO Y SÓLIDO, NO TRANSPARENTE */
+            margin: 3% auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            /* Sombra pronunciada para elevar el modal */
+            overflow: hidden;
+            animation: slideIn 0.3s ease-out;
+            /* Animación de entrada suave */
+        }
+
+        /* 3. CABECERA DEL MODAL */
+        .modal-header {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            /* Degradado profesional */
+            color: white;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* 4. CUERPO DEL FORMULARIO Y GRILLA */
+        #formMaestroProducto {
+            padding: 25px;
+        }
+
+        /* Estructura en Grilla: LA CLAVE DE LA ALINEACIÓN */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Columnas responsivas */
+            gap: 20px;
+            /* Espaciado uniforme entre campos */
+            margin-bottom: 25px;
+        }
+
+        /* Contenedor de cada Campo */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo de las Etiquetas (Labels) */
+        .form-group label {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Estilo Uniforme para Inputs y Selects */
+        .form-group input,
+        .form-group select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fbfbfb;
+            transition: all 0.2s;
+            height: 48px;
+            /* Altura uniforme para todos */
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #1a73e8;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+            outline: none;
+        }
+
+        /* SECCIONES DEL FORMULARIO */
+        .form-section {
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: #fff;
+            position: relative;
+        }
+
+        .form-section h3 {
+            margin-top: 0;
+            color: #1a73e8;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Efecto minimizado */
+        .form-section.minimized {
+            height: 60px;
+            overflow: hidden;
+            background: #f8f9fa;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* 5. BOTONES INTERACTIVOS */
+        .btn-agregar-variante {
+            background: #f1f3f4;
+            color: #1a73e8;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px dashed #1a73e8;
+            font-weight: 600;
+            display: block;
+            width: 100%;
+            margin: 20px 0;
+            transition: all 0.2s;
+        }
+
+        .btn-agregar-variante:hover {
+            background-color: #e8f0fe;
+            border-style: solid;
+        }
+
+        /* Botón Final */
+        .btn-guardar {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-guardar:hover {
+            background-color: #218838;
+        }
+
+        /* Animación de entrada */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+</head>
+
+
+
+
+<body>
+    <div class="main-container">
+        <header class="header">
+            <button class="btn-back" onclick="window.history.back()">
+                <i class="fa-solid fa-chevron-left"></i> <span> Regresar</span>
+            </button>
+            <div class="title-section">
+                <i class="fas fa-database"></i>
+                <h1>Panel Configuración | Catálogos de operación</h1>
+            </div>
+        </header>
+
+        <div class="content-card">
+            <h2 class="subtitle">CATÁLOGO DE OPERACIÓN PRINCIPAL (Datos maestros)</h2>
+
+            <div class="modules-grid">
+
+
+                <button class="module-btn active" onclick="loadModule('CAT_MATERIA_PRIMA', this)">
+                    <i class="fas fa-mortar-pestle"></i>
+                    <span>MATERIA PRIMA</span>
+                    <div class="status-indicator" id="badge-CAT_MATERIA_PRIMA">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('CAT_PRODUCTOS', this)">
+                    <i class="fas fa-cookie-bite"></i>
+                    <span>PRODUCTOS</span>
+                    <div class="status-indicator" id="badge-CAT_PRODUCTOS">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('CAT_VARIANTES_PRODUCTO', this)">
+                    <i class="fas fa-tags"></i>
+                    <span>VARIANTES PRODUCTO</span>
+                    <div class="status-indicator" id="badge-CAT_VARIANTES_PRODUCTO">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('CAT_RECETAS', this)">
+                    <i class="fas fa-book-open"></i>
+                    <span>RECETAS</span>
+                    <div class="status-indicator" id="badge-CAT_RECETAS">Cargando...⏱</div>
+                </button>
+                <button class="module-btn" onclick="loadModule('REL_RECETA_MP', this)">
+                    <i class="fas fa-list-check"></i>
+                    <span>RELACION RECETA</span>
+                    <div class="status-indicator" id="badge-REL_RECETA_MP">Cargando...⏱</div>
+                </button>
+            </div>
+
+
+
+
+            <hr class="divider">
+
+            <div class="table-header">
+                <h3 id="current-table-title">Materia Prima</h3>
+                <button class="btn-agregar" onclick="openModal('add')">
+                    <i class="fas fa-plus-circle"></i> Agregar Nuevo
+                </button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="🔍 Buscar registros..." onkeyup="filtrarTabla()">
+            </div>
+
+            <div class="table-container">
+                <table id="master-table">
+                    <thead>
+                        <tr id="table-head"></tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <tr>
+                            <td style="text-align:center;">Cargando registros...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="formModal" class="modal modal-cat">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Registro</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="dynamicForm">
+                <div id="formInputs" class="form-grid"></div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="formModalProducto" class="modal modal-cat">
+        <div class="modal-content-grande">
+            <div class="modal-header">
+                <h2><i class="fas fa-cookie-bite"></i> Maestro de Productos y Variantes</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+
+            <form id="formMaestroProducto">
+                <div id="section-base" class="form-section">
+                    <div class="section-header">
+                        <h3>1. Datos Base del Producto</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Nombre del Producto</label>
+                            <input type="text" id="nombre_bp" required oninput="validarCamposBase()">
+                        </div>
+                        <div class="input-group">
+                            <label>Categoría</label>
+                            <select id="id_categoria" required onchange="validarCamposBase()"></select>
+                        </div>
+                        <div class="input-group">
+                            <label>Sabor</label>
+                            <select id="id_sabor" required onchange="validarCamposBase()"></select>
+                        </div>
+                        <div class="input-group">
+                            <label>¿Activo?</label>
+                            <select id="activo_bp">
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="container-btn-variante" style="display:none; text-align: center; margin: 20px 0;">
+                    <button type="button" class="btn-agregar-variante" onclick="activarSeccionVariantes()">
+                        <i class="fas fa-plus-circle"></i> + Configurar Variantes
+                    </button>
+                </div>
+
+                <div id="section-variantes" class="form-section hidden">
+                    <div class="section-header">
+                        <h3>2. Detalle de Variantes</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Presentación</label>
+                            <select id="id_presentacion"></select>
+                        </div>
+                        <div class="input-group">
+                            <label>Vida Útil (Días)</label>
+                            <input type="number" id="vida_util">
+                        </div>
+                        <div class="input-group">
+                            <label>Imagen de Variante</label>
+                            <input type="file" id="input_foto_variante" accept="image/*"
+                                onchange="convertirImagenABase64()">
+                        </div>
+                        <div class="input-group" style="display: flex; align-items: flex-end;">
+                            <button type="button" class="btn-save-item" onclick="agregarVarianteALista()">
+                                Añadir Variante
+                            </button>
+                        </div>
+                    </div>
+
+                    <table class="mini-table">
+                        <thead>
+                            <tr>
+                                <th>Presentación</th>
+                                <th>Vida Útil</th>
+                                <th>Imagen</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-variantes-body"></tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancelar" onclick="closeModal()">Cancelar</button>
+                    <button type="button" class="btn-guardar" id="btnFinalizar" onclick="guardarTodoMaestro()"
+                        disabled>Guardar Producto Completo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="formModalReceta" class="modal modal-cat">
+        <div class="modal-content-grande">
+
+            <div class="modal-header">
+                <h2>🍳 Configuración de Receta</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+
+            <!-- 🔥 IMPORTANTE: quitar submit -->
+            <form id="formMaestroReceta" onsubmit="return false;">
+
+                <!-- ================= CABECERA ================= -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h3>1. Datos de la Receta</h3>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label>Producto</label>
+                            <select id="receta_id_bp" onchange="filtrarVariantesPorBP(); validarBaseReceta()"></select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Variante</label>
+                            <select id="receta_id_variante" onchange="validarBaseReceta()"></select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Porciones</label>
+                            <input type="number" id="receta_porciones" min="0" value="1" oninput="validarBaseReceta()">
+                        </div>
+
+                        <div class="input-group">
+                            <label>¿Activo?</label>
+                            <select id="receta_activo">
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Costo Total</label>
+                            <input type="text" id="receta_costo_total" readonly value="0.00">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ================= INGREDIENTES ================= -->
+                <div id="section-relacionReceta" class="form-section hidden">
+
+                    <div class="section-header">
+                        <h3>2. Ingredientes</h3>
+                    </div>
+
+                    <!-- TABLA MP -->
+                    <div id="tabla-mp-container"></div>
+
+                    <!-- TABLA RESULTADO -->
+                    <table class="mini-table" style="margin-top:20px;">
+                        <thead>
+                            <tr>
+                                <th>Ingrediente</th>
+                                <th>Cantidad</th>
+                                <th>Unidad</th>
+                                <th>Costo</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="ingredientes-body"></tbody>
+                    </table>
+
+                </div>
+
+                <!-- ================= FOOTER ================= -->
+                <div class="modal-footer">
+
+                    <button type="button" class="btn-cancelar" onclick="closeModal()">
+                        Cancelar
+                    </button>
+
+                    <!-- 🔥 ID CORREGIDO (el que usa tu JS) -->
+                    <button type="button" class="btn-guardar" id="btnFinalizarReceta" onclick="guardarRecetaCompleta()">
+                        Guardar Receta
+                    </button>
+
+                </div>
+
+
+                <div id="modalCantidadMP" class="modal modal-cat" style="z-index:3000;"
+                    onclick="event.stopPropagation()">
+
+                    <div class="modal-content" style="max-width:400px;">
+
+                        <div class="modal-header">
+                            <h3 id="mp_nombre">Ingrediente</h3>
+                            <span class="close-btn" onclick="cerrarModalCantidad()">&times;</span>
+                        </div>
+
+                        <input type="hidden" id="mp_id">
+
+                        <div class="form-grid">
+
+                            <div class="input-group">
+                                <label>Unidad</label>
+                                <select id="mp_unidad"></select>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Cantidad</label>
+                                <input type="number" id="mp_cantidad" step="0.01">
+                            </div>
+
+
+                            <div class="input-group">
+                                <label for="mp_instrucciones">Instrucciones</label>
+                                <textarea id="mp_instrucciones" rows="4"
+                                    placeholder="Escribe aquí las instrucciones detalladas..."></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" onclick="cerrarModalCantidad()">
+                                Cancelar
+                            </button>
+
+                            <button type="button" onclick="confirmarIngrediente()">
+                                Siguiente
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <!-- =========================
+MODAL PEQUEÑO (CANTIDAD)
+========================= -->
+
+
+    <script src="../assets/script/generic/globalLoader.js"></script>
+    <script src="../assets/cat_config/cat_op_productos.js"></script>
+    <script src="../assets/cat_config/ui_modal_cat.js"></script>
+    <script src="../assets/script/generic/tablas.js"></script>
+    <script src="../assets/script/generic/search.js"></script>
+
+</body>
+
+</html>
+
+
+<!-- <script src="../assets/cat_config/constants_cat_op.js"></script> -->
+<!-- <script type="module" src="../assets/cat_config/catalog_operations.js"></script> -->
+<!-- <script src="../assets/cat_config/table_cat_op.js"></script> -->
+<!-- <script>
+        // Funciones de control de UI para el Panel de Detalle
+        function cerrarPanelDetalle() {
+            document.getElementById('wrapper-detalle').classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        function toggleSeccion(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Cerrar al hacer click fuera del panel blanco
+        document.getElementById('wrapper-detalle').addEventListener('click', function (e) {
+            if (e.target === this) cerrarPanelDetalle();
+        });
+    </script>
+    <script>
+        /* ================= BUSCADOR EN TIEMPO REAL ================= */
+        function filtrarTabla() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("table-body");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                // Obtenemos la celda del NOMBRE (Insumo), que es la segunda columna (índice 1)
+                const cellNombre = rows[i].getElementsByTagName("td")[1];
+
+                if (cellNombre) {
+                    const textValue = cellNombre.textContent || cellNombre.innerText;
+                    // Si el texto coincide, mostramos la fila, si no, la ocultamos
+                    if (textValue.toUpperCase().indexOf(filter) > -1) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        /* ================= MOTOR DE RENDERIZADO (Actualizado) ================= */
+        function loadModule(sheetName, element) {
+            currentSheet = sheetName;
+
+            // Limpiar el buscador al cambiar de módulo
+            const searchInput = document.getElementById("searchInput");
+            if (searchInput) searchInput.value = "";
+
+            document.querySelectorAll('.module-btn').forEach(b => b.classList.remove('active'));
+            if (element) element.classList.add('active');
+
+            const title = document.getElementById('current-table-title');
+            if (title) title.innerText = sheetName.replace("CAT_", "").replace(/_/g, " ");
+
+            renderSkeleton();
+
+            let data = Array.isArray(window.APP_CACHE?.[sheetName]) ? window.APP_CACHE[sheetName] : [];
+
+            // Ordenar por ID descendente
+            data.sort((a, b) => {
+                const idA = parseInt(String(a.ID_MP).replace(/\D/g, '')) || 0;
+                const idB = parseInt(String(b.ID_MP).replace(/\D/g, '')) || 0;
+                return idB - idA;
+            });
+
+            renderData(data);
+        }
+
+        // ... (El resto de tus funciones renderData, openModal, etc. se mantienen igual)
+    </script> -->

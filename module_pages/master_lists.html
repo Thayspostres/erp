@@ -1,0 +1,155 @@
+<!-- Master_lists.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Thays-Postres - Listas Maestras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <link rel="stylesheet" href="../assets/style/module_pages/style_module_list.css">
+    <link rel="stylesheet" href="../assets/style/globalLoader.css">
+    <link rel="stylesheet" href="../assets/lst_config/ui_modal_lst.css">
+    <link rel="stylesheet" href="../assets/style/search_filter.css">
+    <!-- <link rel="stylesheet" href="../assets/style/style_index.css"> -->
+
+
+</head>
+
+<body>
+    <div class="main-container">
+        <header class="header">
+            <button class="btn-back" onclick="window.history.back()">
+                <i class="fa-solid fa-chevron-left"></i> <span> Regresar</span>
+            </button>
+            <div class="title-section">
+                <i class="fas fa-database"></i>
+                <h1>Panel Configuración | Listas maestras</h1>
+            </div>
+
+
+
+        </header>
+
+        <div class="content-card">
+            <h2 class="subtitle">LISTAS DE ESTADOS Y CATEGORÍAS</h2>
+
+            <div class="modules-grid">
+
+
+                <button class="module-btn active" onclick="loadModule('LST_UNIDADES', this)">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>UNIDAD MEDIDA</span>
+                    <div class="status-indicator" id="badge-LST_UNIDADES">Cargando...⏱</div>
+                </button>
+
+
+                <button class="module-btn" onclick="loadModule('LST_TIPO_GASTO', this)">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>TIPOS GASTO</span>
+                    <div class="status-indicator" id="badge-LST_TIPO_GASTO">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('LST_ESTADOS_PRODUCCION', this)">
+                    <i class="fas fa-tasks"></i>
+                    <span>ESTADOS PROD.</span>
+                    <div class="status-indicator" id="badge-LST_ESTADOS_PRODUCCION">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('LST_ESTADOS_INVENTARIO', this)">
+                    <i class="fas fa-warehouse"></i>
+                    <span>ESTADOS INV.</span>
+                    <div class="status-indicator" id="badge-LST_ESTADOS_INVENTARIO">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('LST_SABORES', this)">
+                    <i class="fas fa-ice-cream"></i>
+                    <span>SABORES</span>
+                    <div class="status-indicator" id="badge-LST_SABORES">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('LST_PRESENTACIONES', this)">
+                    <i class="fas fa-box-open"></i>
+                    <span>PRESENTACIONES</span>
+                    <div class="status-indicator" id="badge-LST_PRESENTACIONES">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('LST_CATEGORIAS', this)">
+                    <i class="fas fa-bread-slice"></i>
+                    <span>CATEGORIA DE PRODUCTO</span>
+                    <div class="status-indicator" id="badge-LST_CATEGORIAS">Cargando...⏱</div>
+                </button>
+
+                <button class="module-btn" onclick="loadModule('LST_PUNTOS_VENTA', this)">
+                    <i class="fas fa-store"></i>
+                    <span>PUNTOS DE VENTA</span>
+                    <div class="status-indicator" id="badge-LST_PUNTOS_VENTA">Cargando...⏱</div>
+                </button>
+            </div>
+
+            <hr class="divider">
+            <div class="table-header">
+
+
+
+
+                <h3 id="current-table-title">Cargando...⌛.⏱ </h3>
+
+
+
+
+
+
+                <div class="search-container">
+                </div>
+                <input type="text" id="searchInput" placeholder=" Buscar registro ..." onkeyup="filtrarTabla()">
+
+                <button class="btn-agregar" onclick="openModal('add')">
+                    <i class="far fa-plus-square"></i>
+                    <span> Agregar Nuevo</span>
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table id="master-table">
+                    <thead>
+                        <tr id="table-head"></tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <tr>
+                            <td colspan="5" style="text-align:center;">Seleccione un módulo para ver los datos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nuevo Registro</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+
+            
+            <form id="dynamicForm" onsubmit="event.preventDefault(); saveRecord();">
+                <div id="formInputs">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="../assets/script/generic/globalLoader.js"></script>
+    <script src="../assets/script/generic/tablas.js"></script>
+    <!-- <script src="../assets/lst_config/ui_modal_lst.js"></script> -->
+    <script src="../assets/script/generic/search.js"></script>
+    <script src="../assets/lst_config/ui_modal_lst.js"></script>
+    <script src="../assets/lst_config/master_lists.js"></script>
+</body>
+
+</html>

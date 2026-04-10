@@ -1,0 +1,170 @@
+/* estilo de detalle receta */
+:root {
+    --primary: #2c3e50;
+    --accent: #3498db;
+    --light: #ecf0f1;
+    --border: #bdc3c7;
+    --danger: #e74c3c;
+    --success: #27ae60;
+}
+
+/* --- MODAL DE DETALLES (OVERLAY) --- */
+.overlay-detalle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.panel-detalle {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 850px;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-body-scroll {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* --- HEADER DEL PANEL --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    color: white;
+    padding: 15px 20px;
+}
+
+.btn-close {
+    background: var(--danger);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.btn-close:hover {
+    transform: scale(1.1);
+}
+
+/* --- CONTENEDORES DE INFORMACIÓN --- */
+.expandable-section {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn-collapse {
+    width: 100%;
+    text-align: left;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.grid-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+/* --- IMAGEN Y LAYOUT PRODUCTO --- */
+.product-layout {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background: #fff;
+    align-items: flex-start;
+}
+
+#det-img-producto {
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    background: #f0f0f0;
+}
+
+/* --- TABLA DE INSUMOS CON SCROLL --- */
+.table-scroll-container {
+    max-height: 220px;
+    /* Aproximadamente 4-5 lineas */
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #eee;
+    margin: 10px;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.detail-table thead {
+    position: sticky;
+    top: 0;
+    background: #eee;
+    z-index: 10;
+}
+
+.detail-table th,
+.detail-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Bloqueo de scroll del body */
+body.modal-open {
+    overflow: hidden;
+}
